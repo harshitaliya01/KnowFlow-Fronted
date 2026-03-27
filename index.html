@@ -703,9 +703,17 @@
       return `
         <div class="doc-item" data-doc-id="${escapeHtml(docId)}">
           <h4><i class="fas fa-file-alt"></i> ${escapeHtml(filename)}</h4>
-          <p><i class="fas fa-fingerprint"></i> ${escapeHtml(docId)}</p>
-          <p><i class="fas fa-database"></i> ${escapeHtml(source)}</p>
-          <p><i class="fas fa-info-circle"></i> ${escapeHtml(status)}</p>
+              <p style="color: white;">
+                <i class="fas fa-id-badge"></i> ${escapeHtml(docId)}
+              </p>
+              
+              <p style="color: white;">
+                <i class="fas fa-database"></i> ${escapeHtml(source)}
+              </p>
+              
+              <p style="color: white;">
+                <i class="fas fa-check-circle"></i> ${escapeHtml(status)}
+              </p>
           <div class="doc-actions">
             <button class="fill-search-btn" data-id="${escapeHtml(docId)}"><i class="fas fa-crosshairs"></i> Use for search</button>
             <button class="danger-btn delete-doc-btn" data-id="${escapeHtml(docId)}"><i class="fas fa-trash-alt"></i> Delete</button>
