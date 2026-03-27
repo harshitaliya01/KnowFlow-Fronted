@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>KnowFlow Engine</title>
-  <!-- Google Fonts & Font Awesome -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+  <title>KnowFlow Engine | Aurora Edition</title>
+  <!-- Google Fonts + Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -17,229 +17,224 @@
 
     body {
       min-height: 100vh;
-      background: #0a0f1c;
+      background: radial-gradient(circle at 10% 20%, #0a0718, #03010f);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1.5rem;
+      padding: 1rem;
       position: relative;
       overflow-x: hidden;
     }
 
-    /* animated background orbs */
+    /* animated aurora borealis effect */
     body::before {
       content: "";
       position: fixed;
-      top: -30%;
-      left: -20%;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at 30% 50%, rgba(0, 255, 200, 0.2), transparent 70%);
-      filter: blur(80px);
+      inset: 0;
+      background: radial-gradient(ellipse at 40% 30%, rgba(156, 85, 255, 0.25), transparent 60%),
+                  radial-gradient(ellipse at 90% 70%, rgba(0, 230, 200, 0.2), transparent 70%);
+      filter: blur(90px);
       z-index: -2;
-      animation: drift 22s infinite alternate ease-in-out;
+      animation: auroraShift 18s infinite alternate ease-in-out;
     }
     body::after {
       content: "";
       position: fixed;
-      bottom: -20%;
-      right: -10%;
-      width: 80%;
-      height: 80%;
-      background: radial-gradient(circle at 70% 80%, rgba(120, 80, 255, 0.25), transparent 70%);
-      filter: blur(100px);
-      z-index: -2;
-      animation: driftReverse 18s infinite alternate;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(45deg, rgba(255, 80, 150, 0.02) 0px, rgba(255, 80, 150, 0.02) 2px, transparent 2px, transparent 8px);
+      pointer-events: none;
+      z-index: -1;
     }
-    @keyframes drift {
-      0% { transform: translate(0, 0) scale(1); opacity: 0.6; }
-      100% { transform: translate(5%, 8%) scale(1.2); opacity: 1; }
-    }
-    @keyframes driftReverse {
-      0% { transform: translate(0, 0) scale(1); opacity: 0.4; }
-      100% { transform: translate(-4%, -5%) scale(1.3); opacity: 0.9; }
+    @keyframes auroraShift {
+      0% { opacity: 0.5; transform: scale(1) translateX(-5%); }
+      100% { opacity: 1; transform: scale(1.1) translateX(8%); }
     }
 
-    /* main container */
+    /* main container — glass with vivid border */
     .app-container {
-      max-width: 1480px;
+      max-width: 1500px;
       width: 100%;
-      background: rgba(8, 20, 28, 0.55);
-      backdrop-filter: blur(18px);
-      border-radius: 2.2rem;
-      box-shadow: 0 30px 50px -20px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.08);
-      border: 1px solid rgba(0, 230, 210, 0.4);
+      background: rgba(8, 6, 22, 0.65);
+      backdrop-filter: blur(20px);
+      border-radius: 2.5rem;
+      box-shadow: 0 30px 55px -20px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(157, 78, 221, 0.3);
       overflow: hidden;
       transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      border: 1px solid rgba(157, 78, 221, 0.5);
     }
 
-    /* header redesign */
+    /* header — neon vibes */
     .portal-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 2rem;
-      background: rgba(2, 18, 22, 0.7);
-      border-bottom: 1px solid rgba(0, 220, 200, 0.5);
+      padding: 0.9rem 2rem;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(191, 90, 242, 0.6);
       flex-wrap: wrap;
       gap: 1rem;
-      backdrop-filter: blur(8px);
     }
     .logo-area h1 {
       font-size: 1.9rem;
-      font-weight: 700;
-      background: linear-gradient(125deg, #b0ffe6, #3affd5, #6c9eff);
+      font-weight: 800;
+      background: linear-gradient(135deg, #f0a6ff, #c084fc, #5ee0fa);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.3px;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
     .logo-area p {
       font-size: 0.7rem;
-      color: #7ecfc0;
-      letter-spacing: 0.5px;
-      margin-top: 4px;
+      color: #bb9eff;
+      letter-spacing: 0.4px;
+      margin-top: 5px;
+      font-weight: 400;
     }
     .user-panel {
-      background: rgba(0, 32, 36, 0.7);
-      padding: 0.45rem 1.2rem;
-      border-radius: 100px;
+      background: rgba(30, 25, 55, 0.7);
+      padding: 0.5rem 1.3rem;
+      border-radius: 60px;
       display: flex;
       align-items: center;
       gap: 1rem;
-      backdrop-filter: blur(5px);
-      border: 1px solid rgba(42, 255, 210, 0.5);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(192, 132, 252, 0.6);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
     #userEmail {
       font-size: 0.85rem;
       font-weight: 500;
-      color: #c7fff0;
+      color: #e9d5ff;
     }
     .logout-btn {
-      background: rgba(255, 80, 100, 0.2);
+      background: rgba(255, 70, 130, 0.2);
       border: none;
       padding: 0.3rem 1rem;
       border-radius: 40px;
       font-size: 0.7rem;
       font-weight: 600;
-      color: #ffb8c4;
+      color: #ffb7d2;
       cursor: pointer;
-      transition: all 0.25s ease;
+      transition: all 0.25s;
       display: flex;
       align-items: center;
       gap: 6px;
     }
     .logout-btn:hover {
-      background: #ff3b5c;
+      background: #ff3b6f;
       color: white;
-      box-shadow: 0 0 12px #ff3b5c;
+      box-shadow: 0 0 14px #ff3b6f;
       transform: scale(1.02);
     }
 
-    /* tab bar modern */
+    /* tab bar — modern capsules */
     .tab-bar {
       display: flex;
-      gap: 0.3rem;
-      padding: 0.9rem 2rem 0 2rem;
+      gap: 0.6rem;
+      padding: 1rem 2rem 0 2rem;
       background: rgba(0, 0, 0, 0.2);
       flex-wrap: wrap;
-      border-bottom: 1px solid rgba(0, 220, 190, 0.2);
+      border-bottom: 1px solid rgba(157, 78, 221, 0.3);
     }
     .tab-btn {
-      background: transparent;
+      background: rgba(25, 20, 45, 0.6);
       border: none;
       padding: 0.6rem 1.6rem;
       font-weight: 600;
       font-size: 0.9rem;
-      border-radius: 2rem;
-      color: #aae6db;
+      border-radius: 3rem;
+      color: #cfc3ff;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.25s;
       display: inline-flex;
       align-items: center;
       gap: 8px;
       backdrop-filter: blur(4px);
     }
-    .tab-btn i { font-size: 1rem; }
+    .tab-btn i {
+      font-size: 1rem;
+    }
     .tab-btn.active {
-      background: linear-gradient(115deg, rgba(0, 180, 160, 0.5), rgba(0, 220, 200, 0.2));
+      background: linear-gradient(115deg, #b77aff, #8b5cf6);
       color: white;
-      box-shadow: 0 2px 12px rgba(0,255,200,0.2);
-      border-bottom: 2px solid #2affdd;
+      box-shadow: 0 6px 18px rgba(139, 92, 246, 0.4);
+      border-bottom: 2px solid #ffaaff;
     }
     .tab-btn:hover:not(.active) {
-      background: rgba(42, 255, 210, 0.15);
-      color: #e6fffc;
+      background: rgba(139, 92, 246, 0.4);
+      color: #f0eaff;
       transform: translateY(-2px);
     }
 
-    /* main content area */
+    /* content panels */
     .tab-content {
       display: none;
       padding: 2rem;
-      animation: fadeRise 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      animation: fadeGlow 0.4s ease;
     }
     .tab-content.active {
       display: block;
     }
-    @keyframes fadeRise {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes fadeGlow {
+      from { opacity: 0; transform: translateY(10px); filter: blur(2px); }
+      to { opacity: 1; transform: translateY(0); filter: blur(0); }
     }
 
-    /* Glassmorphic cards */
+    /* modern glass cards (vivid) */
     .glass-card {
-      background: rgba(12, 34, 40, 0.55);
-      backdrop-filter: blur(12px);
+      background: rgba(20, 18, 42, 0.65);
+      backdrop-filter: blur(16px);
       border-radius: 2rem;
       padding: 1.8rem;
-      border: 1px solid rgba(0, 230, 200, 0.4);
-      box-shadow: 0 15px 35px -15px rgba(0,0,0,0.4);
-      transition: transform 0.25s, border-color 0.2s;
+      border: 1px solid rgba(168, 85, 247, 0.5);
+      box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.5);
+      transition: transform 0.2s, border-color 0.2s;
     }
     .glass-card:hover {
-      border-color: rgba(42, 255, 220, 0.7);
-      box-shadow: 0 20px 40px -12px rgba(0,200,180,0.2);
+      border-color: #c084fc;
+      box-shadow: 0 20px 40px -12px rgba(168, 85, 247, 0.3);
     }
 
+    /* form elements */
     .form-group {
       margin-bottom: 1.4rem;
     }
     label {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       font-size: 0.8rem;
       font-weight: 600;
-      color: #c1fff0;
+      color: #d9caff;
       margin-bottom: 0.5rem;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.2px;
     }
     input, select, textarea {
       width: 100%;
-      background: #071d24;
-      border: 1px solid #308a7a;
-      padding: 0.8rem 1rem;
-      border-radius: 1.2rem;
-      color: #effaf7;
+      background: #0f0d25;
+      border: 1px solid #5b42a8;
+      padding: 0.85rem 1.1rem;
+      border-radius: 1.5rem;
+      color: #f2edff;
       font-size: 0.9rem;
       transition: all 0.2s;
     }
     input:focus, select:focus, textarea:focus {
       outline: none;
-      border-color: #2affdd;
-      box-shadow: 0 0 0 3px rgba(42, 255, 221, 0.25);
-      background: #0c2a32;
+      border-color: #d98eff;
+      box-shadow: 0 0 0 3px rgba(217, 142, 255, 0.3);
+      background: #15122e;
     }
     button {
-      background: linear-gradient(105deg, #1e8f78, #0d6b5c);
+      background: linear-gradient(105deg, #8b5cf6, #6d28d9);
       border: none;
-      padding: 0.7rem 1.6rem;
-      border-radius: 2rem;
+      padding: 0.75rem 1.8rem;
+      border-radius: 2.2rem;
       font-weight: 600;
       color: white;
       cursor: pointer;
@@ -251,109 +246,108 @@
     }
     button:hover:not(:disabled) {
       transform: translateY(-2px);
-      box-shadow: 0 12px 22px -12px #0b5f4e;
-      background: linear-gradient(105deg, #28b396, #0e7e6b);
+      box-shadow: 0 12px 22px -12px #8b5cf6;
+      background: linear-gradient(105deg, #a57cff, #7c3aed);
     }
     .danger-btn {
-      background: linear-gradient(105deg, #c42a3a, #9c1f2c);
+      background: linear-gradient(105deg, #e11d48, #be123c);
     }
     .danger-btn:hover {
-      background: linear-gradient(105deg, #e03a4c, #b12433);
+      background: linear-gradient(105deg, #f43f5e, #e11d48);
     }
 
-    /* Document Grid modern */
+    /* document grid — modern cards */
     .doc-grid {
       display: flex;
       flex-direction: column;
       gap: 1rem;
-      max-height: 460px;
+      max-height: 480px;
       overflow-y: auto;
       padding-right: 0.4rem;
     }
     .doc-item {
-      background: rgba(10, 45, 48, 0.7);
+      background: rgba(25, 22, 55, 0.8);
       backdrop-filter: blur(4px);
-      border-radius: 1.2rem;
+      border-radius: 1.4rem;
       padding: 1rem 1.3rem;
-      border-left: 5px solid #2affdd;
+      border-left: 6px solid #c084fc;
       transition: all 0.2s ease;
       cursor: pointer;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
     .doc-item:hover {
-      background: #1b5c54cc;
-      transform: translateX(6px) scale(1.01);
-      border-left-width: 6px;
+      background: rgba(100, 70, 180, 0.5);
+      transform: translateX(6px);
+      border-left-color: #f0a6ff;
     }
     .doc-item h4 {
-      color: #ebfff8;
-      font-weight: 600;
-      margin-bottom: 6px;
+      color: #f3e8ff;
+      font-weight: 700;
+      margin-bottom: 8px;
       display: flex;
       align-items: center;
       gap: 8px;
     }
     .doc-actions {
       display: flex;
-      gap: 0.8rem;
+      gap: 1rem;
       margin-top: 0.8rem;
     }
     .doc-actions button {
       padding: 0.3rem 1rem;
       font-size: 0.7rem;
-      background: #23695e;
+      background: #4c3b8c;
     }
     .empty-text {
-      color: #8fd9ce;
+      color: #b6a4ff;
       text-align: center;
       padding: 2rem;
       font-style: italic;
     }
 
-    /* Answer area modern */
+    /* Answer area with neon glow */
     .result-wrapper {
-      background: rgba(2, 30, 32, 0.7);
+      background: rgba(12, 10, 30, 0.7);
       backdrop-filter: blur(12px);
-      border-radius: 1.8rem;
-      margin-top: 1.8rem;
-      border: 1px solid #3affcf;
+      border-radius: 2rem;
+      margin-top: 2rem;
+      border: 1px solid #c084fc;
       overflow: hidden;
-      transition: all 0.2s;
     }
     .answer-primary {
       padding: 1.6rem;
-      background: rgba(0, 0, 0, 0.25);
-      border-bottom: 1px solid #40b3a0;
+      background: rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid #b77aff;
     }
     .answer-primary h3 {
-      color: #b2fff0;
+      color: #f0dbff;
       font-size: 1.3rem;
       margin-bottom: 0.8rem;
     }
     .answer-content {
-      color: #f1fff9;
-      line-height: 1.65;
+      color: #f5f0ff;
+      line-height: 1.7;
       font-size: 0.98rem;
     }
     .page-numbers-section {
-      padding: 0.8rem 1.6rem;
-      background: #022b2ad9;
+      padding: 0.9rem 1.6rem;
+      background: #110e28;
       display: flex;
       align-items: center;
       gap: 0.8rem;
       flex-wrap: wrap;
     }
     .page-chip {
-      background: #197a6a;
+      background: #6b46c0;
       padding: 0.25rem 1rem;
       border-radius: 40px;
       font-size: 0.75rem;
       font-weight: 500;
-      color: #eefef8;
-      box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+      color: #f2e5ff;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
     }
 
-    /* Toast modern */
+    /* Toast 2.0 */
     .toast-stack {
       position: fixed;
       top: 1.5rem;
@@ -365,97 +359,96 @@
       pointer-events: none;
     }
     .toast-notify {
-      background: #0a2c32e6;
-      backdrop-filter: blur(14px);
-      border-left: 5px solid #2affdd;
+      background: #1f1a3ae6;
+      backdrop-filter: blur(16px);
+      border-left: 5px solid #c084fc;
       padding: 0.9rem 1.5rem;
-      border-radius: 1rem;
+      border-radius: 1.2rem;
       color: white;
       font-size: 0.85rem;
       font-weight: 500;
       min-width: 240px;
       box-shadow: 0 10px 25px -8px black;
       pointer-events: auto;
-      animation: slideIn 0.25s ease forwards;
+      animation: slideGlide 0.3s ease forwards;
     }
-    .toast-notify.error { border-left-color: #ff6b7c; background: #2d1522e6; }
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateX(50px); }
+    .toast-notify.error { border-left-color: #ff6b7c; background: #2f1a2be6; }
+    @keyframes slideGlide {
+      from { opacity: 0; transform: translateX(60px); }
       to { opacity: 1; transform: translateX(0); }
     }
-    .toast-notify.fade-out { animation: fadeOut 0.2s forwards; }
-    @keyframes fadeOut {
+    .toast-notify.fade-out { animation: fadeExit 0.2s forwards; }
+    @keyframes fadeExit {
       to { opacity: 0; transform: translateX(40px); visibility: hidden; }
     }
 
-    /* Loading Overlay Glow */
+    /* loading overlay — futuristic */
     .loading-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 25, 28, 0.85);
-      backdrop-filter: blur(12px);
+      background: rgba(8, 5, 22, 0.9);
+      backdrop-filter: blur(18px);
       z-index: 9999;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      gap: 1rem;
-      font-weight: 500;
-      color: white;
+      gap: 1.2rem;
+      font-weight: 600;
+      color: #e2c7ff;
       font-size: 1rem;
     }
     .spinner {
-      width: 52px;
-      height: 52px;
-      border: 3px solid rgba(42,255,210,0.2);
-      border-top: 3px solid #2affdd;
+      width: 56px;
+      height: 56px;
+      border: 3px solid rgba(168, 85, 247, 0.3);
+      border-top: 3px solid #d98eff;
       border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      box-shadow: 0 0 15px rgba(42,255,210,0.4);
+      animation: spin 0.7s linear infinite;
+      box-shadow: 0 0 20px #a855f7;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* responsive design */
-    @media (max-width: 720px) {
-      body { padding: 0.8rem; }
-      .portal-header { padding: 1rem; }
-      .tab-bar { padding: 0.8rem 1rem; gap: 0.5rem; }
-      .tab-btn { padding: 0.5rem 1rem; font-size: 0.8rem; }
+    /* responsive magic */
+    @media (max-width: 780px) {
+      body { padding: 0.7rem; }
+      .portal-header { padding: 0.8rem 1.2rem; }
+      .tab-bar { padding: 0.8rem 1.2rem; gap: 0.5rem; }
+      .tab-btn { padding: 0.45rem 1.2rem; font-size: 0.8rem; }
       .tab-content { padding: 1.2rem; }
       .glass-card { padding: 1.2rem; }
-      .doc-actions button { padding: 0.2rem 0.8rem; }
-      .user-panel { padding: 0.3rem 0.9rem; }
       .logo-area h1 { font-size: 1.4rem; }
+      .user-panel { padding: 0.3rem 0.9rem; gap: 0.5rem; }
     }
-    @media (max-width: 480px) {
+    @media (max-width: 550px) {
       .tab-bar { justify-content: center; }
-      .glass-card { padding: 1rem; }
-      .doc-item { padding: 0.8rem; }
+      .doc-item { padding: 0.7rem; }
+      .doc-actions { flex-wrap: wrap; gap: 0.5rem; }
       .answer-primary h3 { font-size: 1.1rem; }
+      button { padding: 0.6rem 1.2rem; }
     }
 
-    /* scrollbar beauty */
+    /* custom scroll */
     .doc-grid::-webkit-scrollbar {
       width: 5px;
     }
     .doc-grid::-webkit-scrollbar-track {
-      background: #0b3d3a;
+      background: #2a2355;
       border-radius: 10px;
     }
     .doc-grid::-webkit-scrollbar-thumb {
-      background: #2affdd;
+      background: #c084fc;
       border-radius: 10px;
     }
-
     button:disabled, input:disabled, select:disabled, textarea:disabled {
-      opacity: 0.55;
+      opacity: 0.5;
       cursor: not-allowed;
     }
     .tab-btn.disabled-tab { pointer-events: none; opacity: 0.4; }
-    i { margin-right: 4px; }
+    i { margin-right: 5px; }
   </style>
 </head>
 <body>
@@ -463,11 +456,11 @@
 <div class="app-container">
   <div class="portal-header">
     <div class="logo-area">
-      <h1><i class="fas fa-brain"></i> KnowFlow <span style="font-size:1.2rem;">✦</span> </h1>
-      <p>secure contextual Q&A · intelligent knowledge retrieval</p>
+      <h1><i class="fas fa-bolt"></i> KnowFlow <span style="font-size:1.1rem;">⚡ Aurora</span></h1>
+      <p>intelligent retrieval · quantum context</p>
     </div>
     <div class="user-panel">
-      <i class="fas fa-user-astronaut" style="color:#7effe6;"></i>
+      <i class="fas fa-meteor" style="color:#d28eff;"></i>
       <span id="userEmail">Not logged in</span>
       <button id="logoutBtn" class="logout-btn" style="display: none;"><i class="fas fa-sign-out-alt"></i> Exit</button>
     </div>
@@ -483,8 +476,8 @@
   <!-- AUTH TAB -->
   <div id="authTab" class="tab-content active">
     <div style="display: flex; gap: 1.8rem; flex-wrap: wrap; justify-content: center;">
-      <div class="glass-card" style="flex:1; min-width: 250px;">
-        <h3 style="color:#dafff0; margin-bottom:1.2rem;"><i class="fas fa-user-plus"></i> Create account</h3>
+      <div class="glass-card" style="flex:1; min-width: 260px;">
+        <h3 style="color:#e5cdff; margin-bottom:1.2rem;"><i class="fas fa-user-plus"></i> Create account</h3>
         <form id="signupForm">
           <div class="form-group">
             <label><i class="fas fa-envelope"></i> Email</label>
@@ -497,8 +490,8 @@
           <button type="submit"><i class="fas fa-arrow-right-to-bracket"></i> Sign up →</button>
         </form>
       </div>
-      <div class="glass-card" style="flex:1; min-width: 250px;">
-        <h3 style="color:#dafff0; margin-bottom:1.2rem;"><i class="fas fa-unlock-alt"></i> Sign in</h3>
+      <div class="glass-card" style="flex:1; min-width: 260px;">
+        <h3 style="color:#e5cdff; margin-bottom:1.2rem;"><i class="fas fa-unlock-alt"></i> Sign in</h3>
         <form id="loginForm">
           <div class="form-group">
             <label><i class="fas fa-envelope"></i> Email</label>
@@ -517,10 +510,10 @@
   <!-- UPLOAD TAB -->
   <div id="uploadTab" class="tab-content">
     <div class="glass-card">
-      <h3 style="color:#dafff0; margin-bottom:1rem;"><i class="fas fa-file-import"></i> Ingest document</h3>
+      <h3 style="color:#e5cdff; margin-bottom:1rem;"><i class="fas fa-file-import"></i> Ingest document</h3>
       <form id="uploadForm" enctype="multipart/form-data">
         <div class="form-group">
-          <label><i class="fas fa-file-pdf"></i> Document (PDF IN TXT)</label>
+          <label><i class="fas fa-file-pdf"></i> Document (PDF / TXT)</label>
           <input type="file" id="documentFile" accept=".pdf,.txt,.md" required>
         </div>
         <div class="form-group">
@@ -535,8 +528,8 @@
   <!-- DOCUMENTS TAB -->
   <div id="docsTab" class="tab-content">
     <div style="display:flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; flex-wrap:wrap; gap:10px;">
-      <h3 style="color:#c2fff0;"><i class="fas fa-database"></i> Your Documents</h3>
-      <button id="loadDocsBtn" style="background:#1e7a6b;"><i class="fas fa-rotate-right"></i> Refresh</button>
+      <h3 style="color:#e2cdff;"><i class="fas fa-database"></i> Your Documents</h3>
+      <button id="loadDocsBtn" style="background:#7b4cdf;"><i class="fas fa-rotate-right"></i> Refresh</button>
     </div>
     <div id="docsList" class="doc-grid">
       <p class="empty-text"><i class="fas fa-cloud-arrow-up"></i> Click "Refresh" to load documents</p>
@@ -546,7 +539,7 @@
   <!-- SEARCH TAB (ORACLE) -->
   <div id="searchTab" class="tab-content">
     <div class="glass-card">
-      <h3 style="color:#dafff0; margin-bottom:1rem;"><i class="fas fa-robot"></i> Ask your documents</h3>
+      <h3 style="color:#e5cdff; margin-bottom:1rem;"><i class="fas fa-robot"></i> Ask your documents</h3>
       <form id="searchForm">
         <div class="form-group">
           <label><i class="fas fa-fingerprint"></i> Document ID (click any doc below)</label>
@@ -554,20 +547,20 @@
         </div>
         <div class="form-group">
           <label><i class="fas fa-question-circle"></i> Your question</label>
-          <textarea id="queryText" rows="3" placeholder="What insights can you extract? e.g., If You Upload HR_POLICY PDF Then Ask 'How many holiday in year'"></textarea>
+          <textarea id="queryText" rows="3" placeholder="What insights can you extract? e.g., 'Summarize key policies'"></textarea>
         </div>
         <button type="submit" id="searchBtn"><i class="fas fa-wand-magic"></i> Search Answer</button>
       </form>
     </div>
 
     <div id="searchResult" class="result-wrapper">
-      <div class="answer-primary" style="opacity:0.75; text-align:center; color:#adeee2;">
+      <div class="answer-primary" style="opacity:0.7; text-align:center; color:#c9b5ff;">
         <i class="fas fa-sparkles"></i> Awaiting your query — answers will surface with page references
       </div>
     </div>
 
     <div class="glass-card" style="margin-top: 1.2rem;">
-      <h4 style="color:#c9fff0; margin-bottom: 0.8rem;"><i class="fas fa-layer-group"></i> Your document vault — tap to use</h4>
+      <h4 style="color:#e1ceff; margin-bottom: 0.8rem;"><i class="fas fa-layer-group"></i> Your document vault — tap to use</h4>
       <div id="searchDocsList" class="doc-grid" style="max-height: 260px;">
         <p class="empty-text"><i class="fas fa-spinner fa-pulse"></i> Login to see documents</p>
       </div>
@@ -579,7 +572,7 @@
 <div id="globalOverlay" style="display: none;" class="loading-overlay"><div class="spinner"></div><div><i class="fas fa-cogs"></i> Processing...</div></div>
 
 <script>
-  // KEEP ALL BACKEND ENDPOINTS & LOGIC INTACT — only visual enhancements added
+  // ============ COMPLETE BACKEND LOGIC — 100% IDENTICAL FUNCTIONALITY, ZERO BACKEND CHANGE ============
   const BASE_URL = "https://api.knowflow-ai.online";
   let isProcessing = false;
 
@@ -703,17 +696,15 @@
       return `
         <div class="doc-item" data-doc-id="${escapeHtml(docId)}">
           <h4><i class="fas fa-file-alt"></i> ${escapeHtml(filename)}</h4>
-              <p style="color: white;">
-                <i class="fas fa-id-badge"></i> ${escapeHtml(docId)}
-              </p>
-              
-              <p style="color: white;">
-                <i class="fas fa-database"></i> ${escapeHtml(source)}
-              </p>
-              
-              <p style="color: white;">
-                <i class="fas fa-check-circle"></i> ${escapeHtml(status)}
-              </p>
+            <p style="color: #d9c8ff;">
+              <i class="fas fa-id-badge"></i> ${escapeHtml(docId)}
+            </p>
+            <p style="color: #d9c8ff;">
+              <i class="fas fa-database"></i> ${escapeHtml(source)}
+            </p>
+            <p style="color: #d9c8ff;">
+              <i class="fas fa-check-circle"></i> ${escapeHtml(status)}
+            </p>
           <div class="doc-actions">
             <button class="fill-search-btn" data-id="${escapeHtml(docId)}"><i class="fas fa-crosshairs"></i> Use for search</button>
             <button class="danger-btn delete-doc-btn" data-id="${escapeHtml(docId)}"><i class="fas fa-trash-alt"></i> Delete</button>
@@ -850,4 +841,3 @@
 </script>
 </body>
 </html>
-```
