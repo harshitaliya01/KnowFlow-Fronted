@@ -819,7 +819,7 @@
       const answerRaw = data.result || "No relevant answer found.";
       const pages = data.page || [];
       const formatted = answerRaw.replace(/\\n/g, "\n").split("\n").filter(l=>l.trim()).map(l=>`<p>${escapeHtml(l)}</p>`).join("");
-      let pageBlock = pages && pages.length ? `<div class="page-numbers-section"><i class="fas fa-book-open"></i> <span class="page-label">PAGE REFERENCES:</span> ${[...new Set(pages)].map(p=>`<span class="page-chip">📄 ${escapeHtml(p)}</span>`).join("")}</div>` : `<div class="page-numbers-section"><span class="page-label"><i class="fas fa-link"></i> Source meta</span><span>no page metadata</span></div>`;
+      let pageBlock = pages && pages.length ? `<div class="page-numbers-section"><i class="fas fa-book-open"></i>${[...new Set(pages)].map(p=>`<span class="page-chip">📄 ${escapeHtml(p)}</span>`).join("")}</div>` : `<div class="page-numbers-section"><span class="page-label"><i class="fas fa-link"></i> Source meta</span><span>no page metadata</span></div>`;
       document.getElementById("searchResult").innerHTML = `<div class="answer-primary"><h3><i class="fas fa-lightbulb"></i> Answer</h3><div class="answer-content">${formatted || `<p>${escapeHtml(answerRaw)}</p>`}</div></div>${pageBlock}`;
       showMessage("Oracle responded", "success");
     } catch (err) { showMessage("Search error: " + err.message, "error"); } finally { setLoading(false); }
