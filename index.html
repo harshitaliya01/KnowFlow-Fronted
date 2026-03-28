@@ -794,33 +794,15 @@
     const formData = new FormData();
     formData.append("document", file);
     formData.append("source", source);
-    try {
-  const res = await fetch(`${BASE_URL}/add/document`, {
-    method: "POST",
-    headers: {
-      "Authorization": `Bearer ${token}`
-    },
-    body: formData
-  });
-
-  if (!res.ok) {
-    let errorText;
-    try {
+        try {
+      const res = await fetch(`${BASE_URL}/add/document`, { method: "POST", headers: { "Authorization": `Bearer ${token}` }, body: formData });
       const data = await res.json();
-      errorText = data.detail;
-    } catch {
-      errorText = await res.text();
-    }
-    throw new Error(errorText || "Upload failed");
-  }
-
-  const data = await res.json();
-  showMessage("Document Uploaded", "success");
-
-} catch (err) {
-  console.error("Upload error:", err);
-  showMessage("Upload error: " + err.message, "error");
-}
+      if (!res.ok) throw new Error(data.detail || "Upload failed");
+      showMessage("Document Uploaded", "success");
+      await loadDocumentsForAll();
+      document.getElementById("uploadForm").reset();
+    } catch (err) { showMessage("Upload error: " + err.message, "error"); } finally { setLoading(false); }
+  });
   document.getElementById("searchForm").addEventListener("submit", async (e) => {
     e.preventDefault(); if(isProcessing) return;
     const token = getToken();
