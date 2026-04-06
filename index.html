@@ -513,7 +513,7 @@
       <h3 style="color:#e5cdff; margin-bottom:1rem;"><i class="fas fa-file-import"></i> Ingest document</h3>
       <form id="uploadForm" enctype="multipart/form-data">
         <div class="form-group">
-          <label><i class="fas fa-file-pdf"></i> Document (PDF)</label>
+          <label><i class="fas fa-file-pdf"></i> Document (PDF / TXT)</label>
           <input type="file" id="documentFile" accept=".pdf,.txt,.md" required>
         </div>
         <div class="form-group">
@@ -573,7 +573,7 @@
 
 <script>
   // ============ COMPLETE BACKEND LOGIC — 100% IDENTICAL FUNCTIONALITY, ZERO BACKEND CHANGE ============
-  const BASE_URL = "https://api.knowflow-ai.online";
+  const BASE_URL = "http://127.0.0.1:5000";
   let isProcessing = false;
 
   function setLoading(loading, message = "Processing...") {
@@ -794,7 +794,7 @@
     const formData = new FormData();
     formData.append("document", file);
     formData.append("source", source);
-        try {
+    try {
       const res = await fetch(`${BASE_URL}/add/document`, { method: "POST", headers: { "Authorization": `Bearer ${token}` }, body: formData });
       const data = await res.json();
       if (!res.ok) throw new Error(data.detail || "Upload failed");
@@ -813,7 +813,7 @@
     setLoading(true);
     try {
       const params = new URLSearchParams(); params.append("doc_id", document_id); params.append("query", query);
-      const res = await fetch(`${BASE_URL}/search?${params.toString()}`, { method: "POST", headers: { "Authorization": `Bearer ${token}` } });
+      const res = await fetch(`${BASE_URL}/search`, {method: "POST", headers: {"Content-Type": "application/json","Authorization": `Bearer ${token}` }, body: JSON.stringify({doc_id: document_id, query: query })});
       const data = await res.json();
       if (!res.ok) throw new Error(data.detail || "Search failed");
       const answerRaw = data.result || "No relevant answer found.";
